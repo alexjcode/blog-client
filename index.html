@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Llama Blogger</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:image" content="https://i.imgur.com/1i7h4Du.png" />
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Fjalla One' rel='stylesheet' type='text/css'>
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body>
+  <header>
+    <h1>Llama Blogger</h1>
+    <div id="message" class="fjalla white message"></div>
+    <!-- BUTTONS -->
+    <section class="auth-wrapper col-11 col-md-7 col-lg-5 col-xl-3">
+      <section class="auth row">
+        <button id="sign-up-btn" type="button" class="btn btn-light modalButton col-6" data-toggle="modal" data-target="#signUpModal">
+          Sign Up
+        </button>
+        <button id="sign-in-btn" type="button" class="btn btn-light modalButton col-6" data-toggle="modal" data-target="#signInModal">
+          Sign In
+        </button>
+        <button id="change-password-btn" type="button" class="btn btn-light modalButton col-6" data-toggle="modal" data-target="#changePwModal">
+          Change Password
+        </button>
+        <button id="sign-out" type="button" class="btn btn-light col-6">Sign Out</button>
+      </section>
+    </section>
+    <button id="new-post-btn" type="button" class="btn btn-light postsModal new-post col-11 col-md-7 col-lg-5 col-xl-3" data-toggle="modal" data-target="#newPostModal">
+      Create Post
+    </button>
+  </header>
+
+  <!-- / sign in / -->
+  <section>
+    <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="signInLabel">Sign In</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="sign-in">
+              <input class="form-control" type="email" name="credentials[email]" placeholder="Email" autocomplete="email">
+              <input class="form-control" type="password" name="credentials[password]" placeholder="Password" autocomplete="current-password">
+              <button class="btn btn-dark btn-block col">Submit</button>
+              <div class="fjalla red message-auth center"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- / sign up / -->
+  <section>
+    <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="signUpLabel">Sign-Up</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="sign-up">
+              <input class="form-control" type="email" name="credentials[email]" placeholder="Email" autocomplete="email">
+              <input class="form-control" type="password" name="credentials[password]" placeholder="Password" autocomplete="current-password">
+              <input class="form-control" type="password" name="credentials[password_confirmation]" placeholder="Confirm Password" autocomplete="current-password">
+              <button class="btn btn-dark btn-block col">Submit</button>
+              <div class="fjalla red message-auth center"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- / change pw / -->
+  <section>
+    <div class="modal fade" id="changePwModal" tabindex="-1" role="dialog" aria-labelledby="changePwLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="changePwLabel">Change Password</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="change-password">
+              <input class="form-control" type="password" name="passwords[old]" placeholder="Old Password" autocomplete="current-password">
+              <input class="form-control" type="password" name="passwords[new]" placeholder="New Password" autocomplete="new-password">
+              <button class="btn btn-dark col">Submit</button>
+              <div class="fjalla red message-auth center"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- / create post / -->
+  <div class="modal fade" id="newPostModal" tabindex="-1" role="dialog" aria-labelledby="newPostLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="newPostLabel">Create Post</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="create-post" class="btn-pad">
+            <textarea class="form-control" rows="2" cols="50" name="post[title]" placeholder="Title"></textarea>
+            <textarea class="form-control" rows="4" cols="50" name="post[text]" placeholder="Text"></textarea>
+            <button class="btn btn-dark col">Submit</button>
+            <div class="fjalla red message-blog center"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- update post -->
+  <div class="modal fade" id="updatePostModal" tabindex="-1" role="dialog" aria-labelledby="updatePostLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="updatePostLabel">Edit Post</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="update-post" class="btn-pad">
+            <input class="form-control hide" type="text" name="post[id]" placeholder="Post ID">
+            <textarea rows="4" cols="50" class="form-control" name="post[title]" placeholder="Title"></textarea>
+            <textarea rows="4" cols="50" class="form-control" name="post[text]" placeholder="Text"></textarea>
+            <button class="btn btn-dark col">Submit</button>
+            <div class="fjalla red message-blog center"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- create comment -->
+  <div class="modal fade" id="newCommentModal" tabindex="-1" role="dialog" aria-labelledby="newCommentLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="newCommentLabel">Create Comment</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="create-comment" class="btn-pad">
+            <input class="form-control hide" type="text" name="comment[post]" placeholder="OnWhichPost(ID)">
+            <textarea rows="4" cols="50" class="form-control" name="comment[text]" placeholder="Text"></textarea>
+            <button class="btn btn-dark col">Submit</button>
+            <div class="fjalla red message-blog center"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- update comment -->
+  <div class="modal fade" id="updateCommentModal" tabindex="-1" role="dialog" aria-labelledby="updateCommentLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="updateCommentLabel">Edit Comment</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="update-comment" class="btn-pad">
+            <input class="form-control hide" type="text" name="comment[id]" placeholder="Comment ID">
+            <textarea rows="4" cols="50" class="form-control" name="comment[text]" placeholder="Text"></textarea>
+            <button class="btn btn-dark col">Submit</button>
+            <div class="fjalla red message-blog center"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- / post & comment feed / -->
+  <section id="posts" class="posts col-11"></section>
+</body>
+
+</html>
