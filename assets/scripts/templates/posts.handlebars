@@ -1,36 +1,39 @@
 {{#each posts as |post|}}
+
 <div class="card border-dark mb-3 item" data-id="{{post._id}} style="max-width: 18rem;">
 
   <div class="card-header"> {{post.title}}
-
-    <span>by {{post.owner.email}} </br>
-      <button class="btn edit-post btn-dark" data-id="{{post._id}}" user="{{post.owner._id}}" type="button" data-toggle="modal" data-target=".updatePostModal">EDIT</button>
-
-      <button class="btn btn-outline-danger delete-post btn-dark" data-id="{{post._id}}" user={{post.owner._id}}>DELETE</button>
+    <span class="fjalla">by {{post.owner.email}} </br>
+      <button class="btn edit-post btn-dark" data-id="{{post._id}}" user="{{post.owner._id}}" title="{{post.title}}" text="{{post.text}}" type="button" data-toggle="modal" data-target="#updatePostModal">EDIT</button>
+      <button class="btn btn-outline-danger delete-post btn-dark" data-id="{{post._id}}" user={{post.owner._id}}>X</button>
     </span>
   </div>
 
   <div class="card-body text-dark">
     <h5 class="card-title"></h5>
-    <p class="card-text">{{post.text}}</p>
-
+    <p class="card-text helvetica">{{post.text}}</p>
   </div>
+
   <div class="card-footer">
     <section class="comments">
       {{#each comment as |comm|}}
       <div class="item" data-id="{{comm._id}}">
         <div class="btn-div" data-id="{{comm._id}}">
-          <p>{{comm.owner.email}}: {{comm.text}}</p>
-          <button class="btn edit-comment btn-dark" data-id="{{comm._id}}" text="{{comm.text}}" user={{comm.owner._id}} type="button" data-toggle="modal" data-target=".updateCommentModal">Edit Comment</button>
-          <button class="btn btn-outline-danger delete-comment btn-dark" data-id="{{comm._id}}" user={{comm.owner._id}}>Delete COMMENT</button>
+          <p class="helvetica">
+            <i class="fjalla">{{comm.owner.email}}</i> {{comm.text}}
+            <button class="btn btn-sm ml-1 edit-comment btn-dark" data-id="{{comm._id}}" text="{{comm.text}}" user={{comm.owner._id}} type="button" data-toggle="modal" data-target="#updateCommentModal">Edit</button>
+            <button class="btn btn-sm btn-outline-danger delete-comment btn-dark" data-id="{{comm._id}}" user={{comm.owner._id}}>X</button>
+          </p>
         </div>
       </div>
       {{/each}}
     </section>
   </div>
+
   <div class="btn-div">
-    <button class="btn btn-dark add-comment-to-post" data-id="{{post._id}}" type="button" data-toggle="modal" data-target=".createCommentModal">ADD COMMENT</button>
+    <button class="btn btn-dark add-comment-to-post" data-id="{{post._id}}" type="button" data-toggle="modal" data-target="#newCommentModal">ADD COMMENT</button>
   </div>
+
 </div>
 
 {{/each}}

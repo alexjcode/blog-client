@@ -13,22 +13,6 @@ const getComments = () => {
   })
 }
 
-// const showPost = function () {
-//   return $.ajax({
-//     url: config.apiUrl + '/posts/:id',
-//     method: 'GET'
-//   })
-// }
-
-// const getMyPosts = () => {
-//   return $.ajax({
-//     url: config.apiUrl + '/posts-user/' + store.user._id,
-//     headers: {
-//       Authorization: 'Token token=' + store.user.token
-//     }
-//   })
-// }
-
 const getCommentsOfAPost = () => {
   return $.ajax({
     url: config.apiUrl + '/comments-???'

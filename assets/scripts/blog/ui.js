@@ -1,13 +1,32 @@
 const postTemplate = require('../templates/posts.handlebars')
 // const store = require('../store')
 
+const failureMessage = message => {
+  $('.message-blog').text(message)
+  // $('.message-auth').removeClass('success')
+  // $('.message-auth').addClass('failure')
+  // Clear getFormFields
+  $('form').trigger('reset')
+}
+
+const hideMessaging = function () {
+  setTimeout(function () {
+    $('.message-blog').html('')
+  }, 5000)
+}
+
 const clearForms = () => {
   $('form').trigger('reset')
 }
 
 const createPostSuccess = data => {
+  $('#newPostModal').modal('hide')
   clearForms()
-  $('.myModal').modal('hide')
+}
+
+const createPostFailure = data => {
+  failureMessage('Failed to add post')
+  hideMessaging()
 }
 
 const getPostsSuccess = data => {
@@ -24,17 +43,33 @@ const getPostsSuccess = data => {
 // }
 
 const updatePostSuccess = data => {
+  $('#updatePostModal').modal('hide')
   clearForms()
-  $('.updatePostModal').modal('hide')
+}
+
+const updatePostFailure = data => {
+  failureMessage('Failed to update post')
+  hideMessaging()
 }
 
 const updateCommentSuccess = data => {
+  $('#updateCommentModal').modal('hide')
   clearForms()
-  $('.updateCommentModal').modal('hide')
 }
+
+const updateCommentFailure = data => {
+  failureMessage('Failed to update comment')
+  hideMessaging()
+}
+
 const createCommentSuccess = data => {
+  $('#newCommentModal').modal('hide')
   clearForms()
-  $('.createCommentModal').modal('hide')
+}
+
+const createCommentFailure = data => {
+  failureMessage('Failed to add comment')
+  hideMessaging()
 }
 
 const deleteCommentSuccess = data => {
@@ -53,11 +88,14 @@ const failure = data => {}
 module.exports = {
   getPostsSuccess,
   createCommentSuccess,
+  createCommentFailure,
   createPostSuccess,
-  // getMyPostsSuccess,
+  createPostFailure,
   failure,
   updatePostSuccess,
+  updatePostFailure,
   deleteCommentSuccess,
-  updateCommentSuccess
+  updateCommentSuccess,
+  updateCommentFailure
   // onGetCommentsOfAPost
 }

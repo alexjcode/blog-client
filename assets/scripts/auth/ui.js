@@ -4,15 +4,15 @@ const store = require('../store')
 const successMessage = message => {
   $('form').trigger('reset')
   $('#message').text(message)
-  $('#message').removeClass('failure')
-  $('#message').addClass('success')
+  // $('#message').removeClass('failure')
+  // $('#message').addClass('success')
   $('form').trigger('reset')
 }
 
 const failureMessage = message => {
-  $('#message').text(message)
-  $('#message').removeClass('success')
-  $('#message').addClass('failure')
+  $('.message-auth').text(message)
+  // $('.message-auth').removeClass('success')
+  // $('.message-auth').addClass('failure')
   // Clear getFormFields
   $('form').trigger('reset')
 }
@@ -20,6 +20,7 @@ const failureMessage = message => {
 const hideMessaging = function () {
   setTimeout(function () {
     $('#message').html('')
+    $('.message-auth').html('')
   }, 5000)
 }
 
@@ -47,8 +48,7 @@ const signInSuccess = responseData => {
   $('#new-post').show()
   $('#update-comment').show()
   $('#posts').show()
-  $('#create-post').show()
-  $('.new-post').show()
+  $('#new-post-btn').show()
   store.user = responseData.user
   successMessage('You signed in successfully!')
   hideMessaging()
@@ -73,8 +73,7 @@ const signOutSuccess = responseData => {
   $('#update-post').hide()
   $('#show-post').hide()
   $('#create-comment').hide()
-  $('#create-post').hide()
-  $('.new-post').hide()
+  $('#new-post-btn').hide()
   $('#update-comment').hide()
   $('#posts').show()
   hideMessaging()
