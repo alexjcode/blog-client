@@ -39,6 +39,21 @@ body {
   background-attachment: fixed;
 }
 
-#new-post {
+.new-post {
   text-align: center;
+  display: block;
+}
+
+header {
+  text-align: center;
+}
+
+#modalButton {
+  margin: 0 auto;
+  align-items: center;
+  text-align: center;
+}
+
+#sign-out {
+  display: inline-block;
 }

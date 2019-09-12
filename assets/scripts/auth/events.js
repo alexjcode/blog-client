@@ -16,8 +16,8 @@ const onSignUp = event => {
         .catch(ui.signInFailure)
     })
     .catch(ui.signUpFailure)
-
 }
+
 const onSignIn = event => {
   event.preventDefault()
   const form = event.target
@@ -27,6 +27,7 @@ const onSignIn = event => {
     .then(blogEvents.onGetPosts)
     .catch(ui.signInFailure)
 }
+
 const onSignOut = event => {
   event.preventDefault()
   const form = event.target
@@ -36,6 +37,7 @@ const onSignOut = event => {
     .then(blogEvents.onGetPosts)
     .catch(ui.signOutFailure)
 }
+
 const onChangePassword = event => {
   event.preventDefault()
   const form = event.target
@@ -44,6 +46,7 @@ const onChangePassword = event => {
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
 }
+
 module.exports = {
   onSignIn,
   onSignUp,

@@ -1,5 +1,6 @@
 const config = require('../config')
 const store = require('../store')
+
 const signUp = formData => {
   return $.ajax({
     url: config.apiUrl + '/sign-up',
@@ -7,6 +8,7 @@ const signUp = formData => {
     data: formData
   })
 }
+
 const signIn = formData => {
   return $.ajax({
     url: config.apiUrl + '/sign-in',
@@ -25,6 +27,7 @@ const changePassword = formData => {
     }
   })
 }
+
 const signOut = () => {
   return $.ajax({
     url: config.apiUrl + '/sign-out',
@@ -34,6 +37,7 @@ const signOut = () => {
     }
   })
 }
+
 module.exports = {
   signIn,
   signUp,
